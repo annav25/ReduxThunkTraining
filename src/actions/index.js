@@ -1,9 +1,28 @@
 import {instance} from '../apis/jsonPlaceholder'
 
-export const GetPosts=()=>{
-    return {
-        type:"FETCH_POSTS"
-    }
+export const GetPosts= ()=>{
+  return function(dispatch){
+    instance.get('/posts')
+    .then(Response=>{
+        dispatch({
+            type:"FETCH_POSTS",
+            payload: Response.data
+        });
+    })
+  }
 };
+
+
+  export const GetUser=(id)=>{
+    return function(dispatch){
+      instance.get('/users/'+id)
+      .then(response=>dispatch({
+         type:"FETCH_USER",
+         payload:response.data.name
+        })
+        )
+    }
+  };
+   
 
 

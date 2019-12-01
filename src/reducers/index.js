@@ -1,5 +1,7 @@
-const reducer=()=>{
-    return null;
-}
+import {combineReducers} from 'redux';
+import postReducer from './postReducers';
+import userReducer from './userReducer';
 
-export default reducer;
+
+export default combineReducers({posts:postReducer,user:userReducer});
+
