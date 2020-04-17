@@ -1,8 +1,11 @@
- const userReducer=(currentUser="",action)=>{
+ const userReducer=(currentUserArray=[],action)=>{
     if (action.type==="FETCH_USER"){
-        return action.payload;
+       const findById=currentUserArray.filter(user=> user.id===action.payload.id);
+       if (findById.length===0){
+             return [...currentUserArray,action.payload];
+       }
     }
-    return currentUser;
+    return currentUserArray;
 }
 
 export default userReducer;

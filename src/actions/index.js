@@ -13,14 +13,15 @@ export const GetPosts= ()=>{
 };
 
 
-  export const GetUser=(id)=>{
+  export const GetUserById=(id)=>{
     return function(dispatch){
       instance.get('/users/'+id)
-      .then(response=>dispatch({
+      .then(response=>{
+        dispatch({
          type:"FETCH_USER",
-         payload:response.data.name
-        })
-        )
+         payload:{id:id, name:response.data.name}
+        });
+      })
     }
   };
    

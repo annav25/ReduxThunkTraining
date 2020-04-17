@@ -6,14 +6,17 @@ import UserHeader from './UserHeader';
 class PostList extends React.Component{
 
      renderSingleElement(post){
-        console.log('post',post);
+         if (post.id<10)
+         {
+             console.log('renderSingleElement ',post.id);
+         }
         return (
             <div  key={post.id} className="item">
                   <i className="large bug middle aligned icon"></i>
                  <div className="content">
                     <a className="header">{post.title}</a>
                     <div className="description">{post.body}</div>
-                    <UserHeader userId={post.userId}/>
+                    <UserHeader userId={post.userId} postID={post.id}/>
                  </div>
             </div>
         )
